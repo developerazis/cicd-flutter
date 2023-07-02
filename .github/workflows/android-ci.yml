@@ -30,16 +30,22 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: "12.x"
+          cache: 'gradle'
       # 10
       - uses: subosito/flutter-action@v2
         with:
           # 11
           flutter-version: "3.10.0"
           channel: 'stable'
+          cache: true
 
       - name: Create .env file
         run: |
-          cat > assets/.config_env <<EOF
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}
+          pwd
+
+          cat > ../../assets/.config_env <<EOF
           START=${{ vars.START }}
           EOF
       - name: Get dependencies
