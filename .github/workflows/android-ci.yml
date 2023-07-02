@@ -43,9 +43,8 @@ jobs:
         run: |
           echo "ls -a ${{ github.workspace }}"
           ls -a ${{ github.workspace }}
-          pwd
 
-          cat > ../../assets/.config_env <<EOF
+          cat > ${{ github.workspace }}/assets/.config_env <<EOF
           START=${{ vars.START }}
           EOF
       - name: Get dependencies
