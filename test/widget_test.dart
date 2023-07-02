@@ -16,7 +16,7 @@ void main() async {
   // await DotEnv().load();
 
   setUp(() async {
-    await dotenv.load(fileName: 'assets/.config_env');
+    await dotenv.load(fileName: 'assets/.main_env');
   });
 
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

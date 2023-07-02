@@ -41,8 +41,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          touch ./assets/.config_env
-          echo aws_host="$AWS_HOST" >> ${{ vars.START }}
+          touch ${{ github.workspace }}/assets/.config_env
+          echo START=${{ vars.START }} >> .config_env
 
           echo "cat .config_env"
           cat ${{ github.workspace }}/assets/.config_env
