@@ -41,8 +41,9 @@ jobs:
 
       - name: Create .env file
         run: |
-          touch ./assets/.main_env
-          echo START=${{ vars.START }} >> .main_env
+          cat > ./assets/.main_env <<EOF
+          START=${{ vars.START }}
+          EOF
 
           echo "cat .min_env"
           cat ./assets/.main_env
