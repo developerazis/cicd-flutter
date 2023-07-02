@@ -41,12 +41,14 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "ls -a ${{ github.workspace }}"
-          ls -a ${{ github.workspace }}
+          touch ./assets/.config_env
+          echo aws_host="$AWS_HOST" >> ${{ vars.START }}
 
-          cat > ${{ github.workspace }}/assets/.config_env <<EOF
-          START=${{ vars.START }}
-          EOF
+          echo "cat .config_env"
+          cat ${{ github.workspace }}/assets/.config_env
+          
+          echo "ls -a ${{ github.workspace }}"
+          ls -a ${{ github.workspace }}/assets
       - name: Get dependencies
         run: flutter pub get
       - name: Test
