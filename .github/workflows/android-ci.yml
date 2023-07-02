@@ -36,9 +36,16 @@ jobs:
           # 11
           flutter-version: "3.10.0"
           channel: 'stable'
-      # 12
+
+      - name: Create .env file
+        run: |
+          cat > assets/.config_env <<EOF
+          START=${{ vars.START }}
+          EOF
       - name: Get dependencies
         run: flutter pub get
+      - name: Test
+        run:  flutter test test/widget_test.dart
 
       # Runs a set of commands using the runners shell
 #      - name: Start release build
